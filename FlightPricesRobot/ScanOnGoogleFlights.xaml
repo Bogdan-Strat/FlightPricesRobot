@@ -4,13 +4,14 @@
     <x:Property Name="InDestinationCity" Type="InArgument(x:String)" />
     <x:Property Name="InDepartureDateAsString" Type="InArgument(x:String)" />
     <x:Property Name="InArrivalDateAsString" Type="InArgument(x:String)" />
-    <x:Property Name="InMaximPriceAsString" Type="InArgument(x:String)" />
     <x:Property Name="FlightPricesFromGoogleFlights" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="InClass" Type="InArgument(x:String)" />
+    <x:Property Name="InNrOfPassengersAsString" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1123,1424</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1123,636</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ScanOnGoogleFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -106,78 +107,27 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScanOnGoogleFlights" sap:VirtualizedContainerService.HintSize="633,1359" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="https://www.google.ro/travel/flights" Name="Url" />
-      <Variable x:TypeArguments="x:Int32" Default="[Cint(InMaximPriceAsString)]" Name="MaximPrice" />
-    </Sequence.Variables>
+  <Sequence DisplayName="ScanOnGoogleFlights" sap:VirtualizedContainerService.HintSize="496,571" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="571,616" sap2010:WorkflowViewState.IdRef="RetryScope_1">
-      <ui:RetryScope.ActivityBody>
-        <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="529,349" sap2010:WorkflowViewState.IdRef="Sequence_4">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,238" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[Url]">
-              <ui:OpenBrowser.Body>
-                <ActivityAction x:TypeArguments="x:Object">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
-                  </Sequence>
-                </ActivityAction>
-              </ui:OpenBrowser.Body>
-            </ui:OpenBrowser>
-          </Sequence>
-        </ActivityAction>
-      </ui:RetryScope.ActivityBody>
-      <ui:RetryScope.Condition>
-        <ActivityFunc x:TypeArguments="x:Boolean">
-          <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'SPAN'" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-            <ui:UiElementExists.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aacb6e30-0721-4bd8-989c-acc7e46f6b17" InformativeScreenshot="ab4b3fde13478ebcb5896a6ca74c4237" Selector="&lt;html app='chrome.exe' title='Zboruri Google' /&gt;&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;c-wiz&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;span' tag='SPAN' /&gt;">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:UiElementExists.Target>
-          </ui:UiElementExists>
-        </ActivityFunc>
-      </ui:RetryScope.Condition>
-    </ui:RetryScope>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SearchForFlightsOnGoogleFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="571,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SearchForFlightsOnGoogleFlights.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SearchForFlightsOnGoogleFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SearchForFlightsOnGoogleFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="InOriginCity">[InOriginCity]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="InDestinationCity">[InDestinationCity]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="InDepartureDate">[InDepartureDateAsString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="InArrivalDate">[InArrivalDateAsString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InClass">[InClass]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="InNrOfPassengers">[Cint(InNrOfPassengersAsString)]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapingFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="571,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ScrapingFlights.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapingFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ScrapingFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="FlightPricesFromGoogleFlights" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">[FlightPricesFromGoogleFlights]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[FlightPricesFromGoogleFlights.RowCount.ToString]" />
-    <ui:WriteCsvFile AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Prices.csv" sap:VirtualizedContainerService.HintSize="571,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
+    <ui:WriteCsvFile AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Prices.csv" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
   </Sequence>
 </Activity>
