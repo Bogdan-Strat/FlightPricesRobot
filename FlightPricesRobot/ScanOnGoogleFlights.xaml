@@ -125,7 +125,15 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapingFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ScrapingFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">[FlightPricesFromGoogleFlights]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="FlightPricesFromGoogleFlights" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InDepartureCity">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="InOriginCity" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InArrivalCity">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="InDestinationCity" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:WriteCsvFile AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Prices.csv" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
