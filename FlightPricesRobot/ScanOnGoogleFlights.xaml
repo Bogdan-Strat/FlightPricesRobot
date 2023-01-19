@@ -7,11 +7,13 @@
     <x:Property Name="FlightPricesFromGoogleFlights" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="InClass" Type="InArgument(x:String)" />
     <x:Property Name="InNrOfPassengersAsString" Type="InArgument(x:String)" />
+    <x:Property Name="InPricesReportSheet" Type="InArgument(x:String)" />
+    <x:Property Name="InPricesReportPath" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1123,826</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>684,1504</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ScanOnGoogleFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -50,6 +52,8 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,15 +109,19 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScanOnGoogleFlights" sap:VirtualizedContainerService.HintSize="594,761" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScanOnGoogleFlights" sap:VirtualizedContainerService.HintSize="593.6,1439.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SearchForFlightsOnGoogleFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SearchForFlightsOnGoogleFlights.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SearchForFlightsOnGoogleFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="531.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SearchForFlightsOnGoogleFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="InOriginCity">[InOriginCity]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="InDestinationCity">[InDestinationCity]</InArgument>
@@ -123,28 +131,44 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="InNrOfPassengers">[Cint(InNrOfPassengersAsString)]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapingFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ScrapingFlights.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapingFlights.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="531.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ScrapingFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="FlightPricesFromGoogleFlights" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InDepartureCity">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="InOriginCity" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InArrivalCity">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="InDestinationCity" />
-        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutFlights">[FlightPricesFromGoogleFlights]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InDepartureCity">[InOriginCity]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InArrivalCity">[InDestinationCity]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,344" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,265" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <If Condition="[File.Exists(&quot;PricesReport.xlsx&quot;)]" sap:VirtualizedContainerService.HintSize="531.2,634.4" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="400,228" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteCsvFile AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Prices.csv" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
+          <ui:AppendRange DataTable="[FlightPricesFromGoogleFlights]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="337.6,116" sap2010:WorkflowViewState.IdRef="AppendRange_2" SheetName="[InPricesReportSheet]" WorkbookPath="[InPricesReportPath]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="400,228" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="337.6,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[InPricesReportSheet]" WorkbookPath="[InPricesReportPath]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="531.2,345.6" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,267.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:WriteCsvFile AddHeaders="True" DataTable="[FlightPricesFromGoogleFlights]" Delimitator="Comma" DisplayName="Write CSV" FilePath="Prices.csv" sap:VirtualizedContainerService.HintSize="433.6,155.2" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>

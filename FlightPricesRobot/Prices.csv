@@ -1,12 +1,16 @@
 ﻿FlightOperator,Time,DepartureAndArrivalAirports,NumberOfStops,Price
-SWISSOperat de Helvetic,7 h 5 min.,OTP–LHR,O escală,1.256 USD
-Austrian,9 h 25 de min.,OTP–LHR,O escală,1.257 USD
-Lufthansa,5 h,OTP–LHR,O escală,1.296 USD
-British Airways,3 h 50 de min.,OTP–LHR,Fără escală,1.322 USD
-LOT,6 h,OTP–LHR,O escală,1.491 USD
-Austrian,7 h 20 de min.,OTP–LHR,O escală,1.257 USD
-Lufthansa,6 h 25 de min.,OTP–LHR,O escală,1.296 USD
-"SWISSOperat de Helvetic, Helvetic",16 h 55 de min.,OTP–LCY,O escală,1.467 USD
-KLMOperat de KLM Cityhopper,4 h 50 de min.,OTP–LCY,O escală,2.019 USD
-Lufthansa,5 h 30 de min.,OTP–LHR,O escală,2.127 USD
-Turkish Airlines,7 h 40 de min.,OTP–LGW,O escală,2.582 USD
+"Hawaiian, JAL",20 de h 30 de min.,JFK–HND,O escală,30.209 RON
+SWISSANA,21 de h 55 de min.,EWR–NRT,O escală,50.144 RON
+Hawaiian,41 de h,JFK–NRT,O escală,28.917 RON
+Hawaiian,42 de h 10 min.,JFK–HND,O escală,28.926 RON
+"Korean Air, AsianaANA",21 de h 30 de min.,JFK–NRT,O escală,74.747 RON
+"Korean AirDelta, JAL",22 de h 45 de min.,JFK–NRT,O escală,79.045 RON
+Korean AirJAL,21 de h 20 de min.,JFK–HND,O escală,79.122 RON
+"Alaska, Singapore Airlines",22 de h 50 de min.,EWR–NRT,O escală,79.192 RON
+"Alaska, Singapore Airlines",20 de h 35 de min.,EWR–NRT,O escală,79.488 RON
+ANA,14 h,JFK–HND,Fără escală,100.138 RON
+"United, ANA",19 h,LGA–NRT,O escală,102.387 RON
+JALAmerican,14 h 15 min.,JFK–HND,Fără escală,106.366 RON
+JALAmerican,14 h 15 min.,JFK–HND,Fără escală,106.366 RON
+"American, JAL",17 h 5 min.,LGA–HND,O escală,112.399 RON
+"United, ANA",17 h 5 min.,LGA–HND,O escală,113.791 RON
