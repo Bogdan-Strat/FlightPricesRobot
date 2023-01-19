@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="C:\Users\ipericica\Downloads\Email_Destination.pdf" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[emailToSend]">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="Email_Destination.pdf" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[emailToSend]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -98,7 +98,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadPDFText>
-    <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="C:\Users\ipericica\Downloads\scan_20230119200946.pdf" sap:VirtualizedContainerService.HintSize="338,135" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" ImageDpi="150" Range="All" Text="[subjectToSend]">
+    <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="scan_20230119200946.pdf" sap:VirtualizedContainerService.HintSize="338,135" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" ImageDpi="150" Range="All" Text="[subjectToSend]">
       <ui:ReadPDFWithOCR.OCREngine>
         <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
           <ActivityFunc.Argument>
