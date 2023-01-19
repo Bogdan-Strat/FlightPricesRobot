@@ -3,8 +3,12 @@
   "description": "RPA Project",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.DocumentUnderstanding.Activities": "[1.0.6]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.18.0]",
     "UiPath.Excel.Activities": "[2.17.0-preview]",
+    "UiPath.IntelligentOCR.Activities": "[6.6.0]",
     "UiPath.Mail.Activities": "[1.18.2]",
+    "UiPath.PDF.Activities": "[3.11.0]",
     "UiPath.System.Activities": "[22.10.4]",
     "UiPath.Testing.Activities": "[22.12.0-preview]",
     "UiPath.UIAutomation.Activities": "[22.10.4]"

@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1123,3737</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1874,3735</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SearchForFlightsOnGoogleFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -95,7 +95,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SearchForFlightsOnGoogleFlights" sap:VirtualizedContainerService.HintSize="734,3672" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SearchForFlightsOnGoogleFlights" sap:VirtualizedContainerService.HintSize="734,3670" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Economic" Name="TypeOfFlight" />
     </Sequence.Variables>
@@ -140,7 +140,7 @@
     </ui:TypeInto>
     <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT'" sap:VirtualizedContainerService.HintSize="672,135" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[InDestinationCity +&quot;[k(enter)]&quot;]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02f167b4-c8e0-4527-8f19-f7b6d77cebbe" InformativeScreenshot="966d808b29ec0373f2b0f464e349c8aa" Selector="&lt;html app='chrome.exe' title='Zboruri Google' /&gt;&lt;webctrl aria-labelledby='i22' tag='INPUT' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02f167b4-c8e0-4527-8f19-f7b6d77cebbe" InformativeScreenshot="966d808b29ec0373f2b0f464e349c8aa" Selector="&lt;html app='chrome.exe' title='Zboruri Google' /&gt;&lt;webctrl aria-labelledby='i20' tag='INPUT' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -203,7 +203,7 @@
       </ui:Click.Target>
     </ui:Click>
     <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="672,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-    <If Condition="[InNrOfPassengers &gt; 1]" sap:VirtualizedContainerService.HintSize="672,1045" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[InNrOfPassengers &gt; 1]" sap:VirtualizedContainerService.HintSize="672,1043" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="594,764" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -277,7 +277,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,104.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,103" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -390,7 +390,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="063b7666-b56f-4a6c-9c6c-61370c3a6ad6" InformativeScreenshot="9cd879d85dda9f19e68fbabc38546fcf" Selector="&lt;html app='chrome.exe' title='Zboruri Google' /&gt;&lt;webctrl aaname='Terminat' parentid='ow68' tag='SPAN' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="063b7666-b56f-4a6c-9c6c-61370c3a6ad6" InformativeScreenshot="9cd879d85dda9f19e68fbabc38546fcf" Selector="&lt;html app='chrome.exe' title='Zboruri Google' /&gt;&lt;webctrl class='VfPpkd-RLmnJb' css-selector='body&amp;gt;c-wiz&amp;gt;div&amp;gt;div&amp;gt;c-wiz&amp;gt;div&amp;gt;c-wiz&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;div' parentid='ow67' tag='DIV' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>

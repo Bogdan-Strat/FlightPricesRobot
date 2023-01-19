@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1123,880" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1421,2456" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -30,10 +30,18 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.DocumentUnderstanding.Digitizer.Utils</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,9 +86,22 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.Digitizer</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="400,815" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498,2391" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="ReadDataDt" />
       <Variable x:TypeArguments="x:String" Name="PathReadData" />
@@ -93,63 +114,135 @@
       <Variable x:TypeArguments="x:String" Name="EmailSubject" />
       <Variable x:TypeArguments="x:String" Name="EmailReceiver" />
       <Variable x:TypeArguments="x:String" Name="EmailSender" />
+      <Variable x:TypeArguments="x:String" Name="test" />
+      <Variable x:TypeArguments="x:String" Name="emailToSend" />
+      <Variable x:TypeArguments="x:String" Name="subjectToSend" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadConfigFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="ReadConfigFile.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmailAndSubjectFromPDFs.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="GetEmailAndSubjectFromPDFs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutPathDataToSearch">[PathReadData]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutSheetDataToSearch">[SheetNameData]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutGoogleFlightsUrl">[GoogleFlightsUrl]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailReceiver">[EmailReceiver]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSender">[EmailSender]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="OutEmailPort">[EmailPort]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailServer">[EmailServer]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSubject">[EmailSubject]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailPassword">[EmailPassword]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="emailToSend">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailToSend" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="subjectToSend">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="subjectToSend" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadDataToSearch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ReadDataToSearch.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutDataDt">[ReadDataDt]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InPathReadData">[PathReadData]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InSheetNameReadData">[SheetNameData]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SendEmail.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailPassword">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailPassword" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailReceiver">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailReceiver" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="InEmailPort">
-          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="EmailPort" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailServer">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailServer" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailSender">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailSender" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailSubject">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailSubject" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="InExcel">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="ReadDataDt" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[ReadDataDt.ColumnCount.ToString]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScanWebsites.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ScanWebsites.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="InDataFlightsDt">[ReadDataDt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InGoogleFlightsUrl">[GoogleFlightsUrl]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[string.Format(&quot;{0}{1}&quot;, emailToSend, subjectToSend)]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,303" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadConfigFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="ReadConfigFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutPathDataToSearch">[PathReadData]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutSheetDataToSearch">[SheetNameData]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutGoogleFlightsUrl">[GoogleFlightsUrl]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutEmailReceiver">[EmailReceiver]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSender">[EmailSender]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="OutEmailPort">[EmailPort]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutEmailServer">[EmailServer]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSubject">[EmailSubject]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutEmailPassword">[EmailPassword]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,303" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadDataToSearch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ReadDataToSearch.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutDataDt">[ReadDataDt]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InPathReadData">[PathReadData]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InSheetNameReadData">[SheetNameData]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,303" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SendEmail.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="InEmailPassword">[EmailPassword]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InEmailReceiver">[EmailReceiver]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="InEmailPort">[EmailPort]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InEmailServer">[EmailServer]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InEmailSender">[EmailSender]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InEmailSubject">[EmailSubject]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="InExcel">[ReadDataDt]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,282" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,203" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[ReadDataDt.ColumnCount.ToString]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,303" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScanWebsites.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ScanWebsites.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="InDataFlightsDt">[ReadDataDt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InGoogleFlightsUrl">[GoogleFlightsUrl]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,303" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDFWrite.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="PDFWrite.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="InTest">abcde</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="OutTest">[test]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>

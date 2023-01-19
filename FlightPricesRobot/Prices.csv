@@ -1,21 +1,12 @@
 ﻿FlightOperator,Time,DepartureAndArrivalAirports,NumberOfStops,Price
-"Air Europa, Scandinavian Airlines",17 h 15 min.,MAD–OSL,O escală,801 RON
-KLMOperat de KLM Cityhopper,10 h 10 min.,MAD–TRF,O escală,1.049 RON
-VuelingIberia,6 h 25 de min.,MAD–OSL,O escală,1.095 RON
-"Air Europa, KLMOperat de KLM Cityhopper",8 h 55 de min.,MAD–TRF,O escală,1.142 RON
-Brussels Airlines,5 h 15 min.,MAD–OSL,O escală,1.368 RON
-VuelingIberia,12 h 5 min.,MAD–OSL,O escală,1.016 RON
-KLMOperat de KLM Cityhopper,12 h 20 de min.,MAD–OSL,O escală,1.107 RON
-FinnairOperat de Iberia for Finnair,21 de h 40 de min.,MAD–OSL,O escală,1.245 RON
-Brussels Airlines,10 h 10 min.,MAD–OSL,O escală,1.270 RON
-KLM,6 h,MAD–OSL,O escală,1.339 RON
-KLMOperat de KLM Cityhopper,9 h 45 de min.,MAD–OSL,O escală,1.339 RON
-KLMOperat de KLM Cityhopper,5 h 50 de min.,MAD–TRF,O escală,1.340 RON
-Brussels Airlines,11 h,MAD–OSL,O escală,1.368 RON
-KLMOperat de KLM Cityhopper,5 h 40 de min.,MAD–TRF,O escală,1.453 RON
-"Air Europa, KLMOperat de KLM Cityhopper",6 h 35 de min.,MAD–OSL,O escală,1.457 RON
-KLMOperat de KLM Cityhopper,5 h 45 de min.,MAD–OSL,O escală,1.457 RON
-KLM,5 h 5 min.,MAD–OSL,O escală,1.910 RON
-Lufthansa,6 h 5 min.,MAD–OSL,O escală,2.154 RON
-Air France,5 h 25 de min.,MAD–OSL,O escală,2.196 RON
-"Iberia, British Airways",6 h 5 min.,MAD–OSL,O escală,2.419 RON
+SWISSOperat de Helvetic,7 h 5 min.,OTP–LHR,O escală,1.256 USD
+Austrian,9 h 25 de min.,OTP–LHR,O escală,1.257 USD
+Lufthansa,5 h,OTP–LHR,O escală,1.296 USD
+British Airways,3 h 50 de min.,OTP–LHR,Fără escală,1.322 USD
+LOT,6 h,OTP–LHR,O escală,1.491 USD
+Austrian,7 h 20 de min.,OTP–LHR,O escală,1.257 USD
+Lufthansa,6 h 25 de min.,OTP–LHR,O escală,1.296 USD
+"SWISSOperat de Helvetic, Helvetic",16 h 55 de min.,OTP–LCY,O escală,1.467 USD
+KLMOperat de KLM Cityhopper,4 h 50 de min.,OTP–LCY,O escală,2.019 USD
+Lufthansa,5 h 30 de min.,OTP–LHR,O escală,2.127 USD
+Turkish Airlines,7 h 40 de min.,OTP–LGW,O escală,2.582 USD
