@@ -97,35 +97,71 @@
       <Variable x:TypeArguments="x:String" Name="PricesReportSheet" />
       <Variable x:TypeArguments="x:String" Name="emailToSend" />
       <Variable x:TypeArguments="x:String" Name="subjectToSend" />
+      <Variable x:TypeArguments="x:String" Name="SubjectPDFPath" />
+      <Variable x:TypeArguments="x:String" Name="EmailDestinationPDFPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmailAndSubjectFromPDFs.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="GetEmailAndSubjectFromPDFs.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadConfigFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="ReadConfigFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="emailToSend">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailToSend" />
+        <OutArgument x:TypeArguments="x:String" x:Key="OutPathDataToSearch">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathReadData" />
         </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="subjectToSend">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="subjectToSend" />
+        <OutArgument x:TypeArguments="x:String" x:Key="OutSheetDataToSearch">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="SheetNameData" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutGoogleFlightsUrl">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="GoogleFlightsUrl" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailReceiver">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailReceiver" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSender">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailSender" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="OutEmailPort">
+          <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="EmailPort" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailServer">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailServer" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSubject">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailSubject" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailPassword">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailPassword" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutPricesReportPath">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PricesReportPath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutPricesReportSheet">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PricesReportSheet" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutSubjectPDFPath">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="SubjectPDFPath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailDestinationPDFPath">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailDestinationPDFPath" />
         </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadConfigFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="ReadConfigFile.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmailAndSubjectFromPDFs.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="GetEmailAndSubjectFromPDFs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutPathDataToSearch">[PathReadData]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutSheetDataToSearch">[SheetNameData]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutGoogleFlightsUrl">[GoogleFlightsUrl]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailReceiver">[EmailReceiver]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSender">[EmailSender]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="OutEmailPort">[EmailPort]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailServer">[EmailServer]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailSubject">[EmailSubject]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailPassword">[EmailPassword]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutPricesReportPath">[PricesReportPath]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutPricesReportSheet">[PricesReportSheet]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="InEmailToSend">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailToSend" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="InSubjectToSend">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="subjectToSend" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InSubjectPDFPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="SubjectPDFPath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailDestinationPDFPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailDestinationPDFPath" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadDataToSearch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ReadDataToSearch.xaml">
@@ -145,14 +181,36 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SendEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailPassword">[EmailPassword]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailReceiver">[EmailReceiver]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="InEmailPort">[EmailPort]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailServer">[EmailServer]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailSender">[EmailSender]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InEmailSubject">[EmailSubject]</InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="InExcel">[ReadDataDt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InPricesReportPath">[PricesReportPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailPassword">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailPassword" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailReceiver">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailReceiver" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="InEmailPort">
+          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="EmailPort" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailServer">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailServer" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailSender">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailSender" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailSubject">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailSubject" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="InExcel">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="ReadDataDt" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InPricesReportPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PricesReportPath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailSenderFromPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailToSend" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InEmailSubjectFromPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="subjectToSend" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="359,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[PricesReportPath]" />

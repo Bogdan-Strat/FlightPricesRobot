@@ -8,11 +8,13 @@
     <x:Property Name="InEmailSubject" Type="InArgument(x:String)" />
     <x:Property Name="InExcel" Type="InArgument(sd:DataTable)" />
     <x:Property Name="InPricesReportPath" Type="InArgument(x:String)" />
+    <x:Property Name="InEmailSenderFromPDF" Type="InArgument(x:String)" />
+    <x:Property Name="InEmailSubjectFromPDF" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>684,352.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1068,570</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -95,20 +97,24 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="400,260.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="400,263" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="Sper ca merge" DisplayName="Send SMTP Mail Message" Email="[InEmailSender]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="337.6,148.8" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="[InEmailPassword]" Port="[InEmailPort]" SecureConnection="Auto" Server="[InEmailServer]" Subject="[InEmailSubject]" To="[InEmailReceiver]">
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="Sper ca merge" DisplayName="Send SMTP Mail Message" Email="[InEmailSender]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="338,152" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="[InEmailPassword]" Port="[InEmailPort]" SecureConnection="Auto" Server="[InEmailServer]" Subject="[InEmailSubject + &quot; ; &quot; +  InEmailSubjectFromPDF.Remove(0,8)]" To="[InEmailReceiver + &quot;;&quot; + InEmailSenderFromPDF]">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="InPricesReportPath" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String">[InPricesReportPath]</InArgument>
         </scg:List>
       </ui:SendMail.Files>
     </ui:SendMail>

@@ -1,16 +1,14 @@
 ﻿FlightOperator,Time,DepartureAndArrivalAirports,NumberOfStops,Price
-"Hawaiian, JAL",20 de h 30 de min.,JFK–HND,O escală,30.193 RON
-SWISSANA,21 de h 55 de min.,EWR–NRT,O escală,50.120 RON
-"Hawaiian, ANAOperat de ANA Wings",64 de h 20 de min.,JFK–NRT,2 escale,28.688 RON
-Hawaiian,41 de h,JFK–NRT,O escală,28.902 RON
-Hawaiian,42 de h 10 min.,JFK–HND,O escală,28.911 RON
-"Alaska, Singapore Airlines",22 de h 50 de min.,EWR–NRT,O escală,79.155 RON
-"Air Canada, SWISSUnited",26 de h 55 de min.,LGA–NRT,2 escale,79.323 RON
-"Alaska, Singapore Airlines",20 de h 35 de min.,EWR–NRT,O escală,79.450 RON
-"Korean AirDelta, JAL",22 de h 45 de min.,JFK–NRT,O escală,80.586 RON
-"Korean Air, JAL",20 de h 5 min.,JFK–HND,O escală,80.662 RON
-ANA,14 h,JFK–HND,Fără escală,101.668 RON
-JALAmerican,14 h 15 min.,JFK–HND,Fără escală,107.894 RON
-JALAmerican,14 h 15 min.,JFK–HND,Fără escală,107.894 RON
-"American, JAL",17 h 5 min.,LGA–HND,O escală,112.346 RON
-"United, ANA",17 h 5 min.,LGA–HND,O escală,113.738 RON
+"Hawaiian, JAL",20 de h 30 de min.,JFK–HND,O escală,28.078 RON
+SWISSANA,21 de h 55 de min.,EWR–NRT,O escală,50.961 RON
+"Hawaiian, ANAOperat de ANA Wings",64 de h 20 de min.,JFK–NRT,2 escale,28.557 RON
+Hawaiian,41 de h,JFK–NRT,O escală,28.770 RON
+"Alaska, Singapore Airlines",22 de h 50 de min.,EWR–NRT,O escală,78.789 RON
+"Alaska, Singapore Airlines",20 de h 35 de min.,EWR–NRT,O escală,79.083 RON
+"Korean AirDelta, JAL",22 de h 45 de min.,JFK–NRT,O escală,80.214 RON
+"Korean Air, JAL",20 de h 5 min.,JFK–HND,O escală,80.289 RON
+Korean AirJAL,21 de h 20 de min.,JFK–HND,O escală,80.289 RON
+ANA,14 h,JFK–HND,Fără escală,101.198 RON
+"United, ANA",17 h,LGA–NRT,O escală,103.406 RON
+JALAmerican,14 h 15 min.,JFK–HND,Fără escală,107.395 RON
+JALAmerican,14 h 15 min.,JFK–HND,Fără escală,107.395 RON

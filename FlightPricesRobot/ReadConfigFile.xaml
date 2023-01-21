@@ -11,11 +11,13 @@
     <x:Property Name="OutEmailPassword" Type="OutArgument(x:String)" />
     <x:Property Name="OutPricesReportPath" Type="OutArgument(x:String)" />
     <x:Property Name="OutPricesReportSheet" Type="OutArgument(x:String)" />
+    <x:Property Name="OutSubjectPDFPath" Type="OutArgument(x:String)" />
+    <x:Property Name="OutEmailDestinationPDFPath" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>684,1831.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1068,2078</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadConfigFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -99,7 +101,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadConfigFile" sap:VirtualizedContainerService.HintSize="592,1766.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ReadConfigFile" sap:VirtualizedContainerService.HintSize="592,2013" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Config.xlsx" Name="PathConfigFile" />
       <Variable x:TypeArguments="x:String" Default="Foaie1" Name="SheetNameConfigFile" />
@@ -110,20 +112,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ConfigDt]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="529.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[SheetNameConfigFile]" WorkbookPath="[PathConfigFile]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ConfigDt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="529.6,1526.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ConfigDt]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="530,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[SheetNameConfigFile]" WorkbookPath="[PathConfigFile]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ConfigDt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="530,1774" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1409.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1657" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutPathDataToSearch]</OutArgument>
               </Assign.To>
@@ -131,7 +133,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("PathDataToSearch").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutSheetDataToSearch]</OutArgument>
               </Assign.To>
@@ -139,7 +141,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("SheetDataToSearch").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutGoogleFlightsUrl]</OutArgument>
               </Assign.To>
@@ -147,7 +149,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("GoogleFlighstUrl").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutEmailPassword]</OutArgument>
               </Assign.To>
@@ -155,7 +157,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("EmailPassword").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[OutEmailPort]</OutArgument>
               </Assign.To>
@@ -163,7 +165,7 @@
                 <InArgument x:TypeArguments="x:Int32">[cint(CurrentRow("EmailPort").ToString)]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutEmailServer]</OutArgument>
               </Assign.To>
@@ -171,7 +173,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("EmailServer").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutEmailSender]</OutArgument>
               </Assign.To>
@@ -179,7 +181,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("SendEmailAddress").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutEmailReceiver]</OutArgument>
               </Assign.To>
@@ -187,7 +189,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("ReceiveEmailAddress").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutEmailSubject]</OutArgument>
               </Assign.To>
@@ -195,7 +197,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("EmailSubject").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutPricesReportPath]</OutArgument>
               </Assign.To>
@@ -203,12 +205,28 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("PricesReportPath").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[OutPricesReportSheet]</OutArgument>
               </Assign.To>
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">[CurrentRow("PriceReportSheet").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[OutSubjectPDFPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("SubjectPDF").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[OutEmailDestinationPDFPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("EmailDestinationPDF").ToString]</InArgument>
               </Assign.Value>
             </Assign>
           </Sequence>
